@@ -74,7 +74,7 @@ pip install torch torchvision timm matplotlib pillow
 3. Run
 
 ```bash
-python inference.py
+cd code && python model.py
 ```
 
 ---

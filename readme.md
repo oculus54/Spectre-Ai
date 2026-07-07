@@ -1,56 +1,42 @@
-# 🎭 Spectre – AI vs Real Image Detection
+# Spectre – AI vs Real Image Detection
 
-Spectre is a deep learning-based image forensics system that detects whether an image is **AI-generated** or **authentic (real)**. The model combines the strengths of a **ResNet50** convolutional backbone and a **Vision Transformer (ViT-B/16)** to capture both local texture artifacts and global semantic inconsistencies.
-
----
-
-## 📌 Features
-
-- 🔍 Binary classification (AI Generated vs Real)
-- 🧠 Hybrid ResNet50 + Vision Transformer architecture
-- ⚡ GPU (CUDA) accelerated inference
-- 📊 Confidence score visualization
-- 📈 Prediction probability graph
-- 🖼️ Supports inference on any RGB image
-- 💾 PyTorch checkpoint loading
+Spectre is a deep learning-based image forensics model that classifies an image as **AI-Generated** or **Real**. The model combines the feature extraction capabilities of **ResNet50** with the global contextual understanding of a **Vision Transformer (ViT-B/16)** for robust binary image classification.
 
 ---
 
-## 🏗️ Model Architecture
+## Features
+
+- AI vs Real image classification
+- Hybrid ResNet50 + Vision Transformer architecture
+- CUDA-enabled inference
+- Confidence score and probability visualization
+- Fast single-image inference
+- PyTorch + timm implementation
+
+---
+
+## Model Architecture
 
 ```
-                Input Image (224 × 224)
-                        │
-        ┌───────────────┴───────────────┐
-        │                               │
-        ▼                               ▼
-      ResNet50                 Vision Transformer
-        │                               │
-        └───────────────┬───────────────┘
-                        │
-              Feature Concatenation
-                        │
-                Fully Connected Layers
-                        │
-                 Binary Classification
-                        │
-            AI Generated / Real Image
+                 Input Image (224×224)
+                         │
+        ┌────────────────┴────────────────┐
+        │                                 │
+        ▼                                 ▼
+      ResNet50                    Vision Transformer
+        │                                 │
+        └──────────────┬──────────────────┘
+                       ▼
+             Feature Concatenation
+                       ▼
+            Fully Connected Fusion
+                       ▼
+             Binary Classification
 ```
 
 ---
 
-## 🛠️ Tech Stack
-
-- Python
-- PyTorch
-- timm
-- Torchvision
-- Pillow
-- Matplotlib
-
----
-
-## 📂 Project Structure
+## Project Structure
 
 ```text
 Spectre/
@@ -64,22 +50,16 @@ Spectre/
 
 ---
 
-## 📦 Installation
-
-Clone the repository
+## Installation
 
 ```bash
-git clone https://github.com/yourusername/Spectre.git
+git clone https://github.com/your-username/Spectre.git
 cd Spectre
-```
 
-Install dependencies
-
-```bash
 pip install -r requirements.txt
 ```
 
-Or install manually
+or
 
 ```bash
 pip install torch torchvision timm matplotlib pillow
@@ -87,24 +67,10 @@ pip install torch torchvision timm matplotlib pillow
 
 ---
 
-## 🚀 Running Inference
+## Usage
 
-1. Place your trained model
-
-```
-Spectre.pth
-```
-
-inside the project directory.
-
-2. Place the test image
-
-```
-image.jpg
-```
-
-inside the project directory.
-
+1. Place the trained model (`Spectre.pth`) in the project folder.
+2. Place the input image (`image.jpg`) in the project folder.
 3. Run
 
 ```bash
@@ -113,11 +79,54 @@ python inference.py
 
 ---
 
-## 📊 Output
+## Performance
 
-The program displays
+| Metric | Score |
+|--------|------:|
+| Accuracy | **99.05%** |
+| Macro Precision | **98.77%** |
+| Macro Recall | **98.63%** |
+| Macro F1-Score | **98.70%** |
 
-- Uploaded image
+### Classification Report
+
+| Class | Precision | Recall | F1-Score |
+|------|----------:|-------:|---------:|
+| AI Generated | **98.22%** | **97.83%** | **98.03%** |
+| Real | **99.31%** | **99.43%** | **99.37%** |
+
+**Test Samples:** 2,100
+
+---
+
+## Tech Stack
+
+- Python
+- PyTorch
+- timm
+- Torchvision
+- Pillow
+- Matplotlib
+
+---
+
+## Image Preprocessing
+
+- Resize to **224 × 224**
+- Convert to Tensor
+- Normalize using ImageNet statistics
+
+```python
+Mean = [0.485, 0.456, 0.406]
+Std  = [0.229, 0.224, 0.225]
+```
+
+---
+
+## Output
+
+The inference script provides:
+
 - Predicted class
 - Confidence score
 - AI probability
@@ -125,77 +134,26 @@ The program displays
 - Inference time
 - Probability bar chart
 
-Example
+---
 
-```
-Prediction      : AI GENERATED IMAGE
+## Model
 
-Confidence      : 99.32%
-
-AI Probability  : 99.32%
-
-Real Probability: 0.68%
-
-Inference Time  : 0.042 sec
-```
+- **CNN Backbone:** ResNet50
+- **Transformer Backbone:** ViT Base Patch16 224
+- **Framework:** PyTorch
+- **Library:** timm
+- **Task:** Binary Image Classification
 
 ---
 
-## 🧠 Model Details
-
-| Component | Backbone |
-|-----------|----------|
-| CNN | ResNet50 |
-| Transformer | ViT Base Patch16 224 |
-| Framework | PyTorch |
-| Library | timm |
-| Task | Binary Image Classification |
-
----
-
-## 📈 Image Preprocessing
-
-- Resize → 224 × 224
-- Convert to Tensor
-- Normalize using ImageNet statistics
-
-```python
-Mean = [0.485, 0.456, 0.406]
-
-Std = [0.229, 0.224, 0.225]
-```
-
----
-
-## 📚 Dependencies
-
-```
-torch
-torchvision
-timm
-matplotlib
-Pillow
-```
-
----
-
-## ⚠️ Notes
-
-- CUDA is automatically used if available.
-- Images must be RGB.
-- Model weights should be stored as `Spectre.pth`.
-- The inference model architecture must exactly match the architecture used during training.
-
----
-
-## 📜 License
+## License
 
 This project is intended for educational and research purposes.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Debangan Makhal**
 
-Deep Learning • Computer Vision • AI Research
+Computer Vision • Deep Learning • AI Research

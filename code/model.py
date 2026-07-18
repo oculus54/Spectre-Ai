@@ -80,7 +80,7 @@ model = HybridClassifier().to(device)
 
 model.load_state_dict(
     torch.load(
-        "Spectre.pth",
+        "weights\Spectre.pth",
         map_location=device
     )
 )
@@ -95,7 +95,7 @@ print("✅ Model Loaded Successfully")
 if len(sys.argv) > 1:
     image_path = sys.argv[1]
 else:
-    image_path = "gdhd.jpeg"
+    image_path = "D:\Completed-Projects\Spectre-V1\images\kag6.jpeg"
 
 if not os.path.exists(image_path):
     print(f"❌ Error: Image file '{image_path}' not found.")

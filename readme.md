@@ -23,7 +23,6 @@ The repository contains two versions of the model:
 * **Spectre V1:** Hybrid ResNet50 + Vision Transformer (ViT-B/16)
 * **Spectre V2:** ResNet50-based classifier
 
----
 
 ![Spectre AI Preview](images/0d9706df-9012-4568-95ec-7e15c8b40835.jpg)
 

@@ -39,27 +39,6 @@ The repository contains two versions of the model:
 
 ---
 
-## Model Architecture
-
-```text
-                 Input Image (224×224)
-                         │
-        ┌────────────────┴────────────────┐
-        │                                 │
-        ▼                                 ▼
-      ResNet50                    Vision Transformer
-        │                                 │
-        └──────────────┬──────────────────┘
-                       ▼
-             Feature Concatenation
-                       ▼
-            Fully Connected Fusion
-                       ▼
-             Binary Classification
-```
-
----
-
 ## Project Structure
 
 ```text
